@@ -1,0 +1,2 @@
+class TreeBranchesController < ApplicationController
+end

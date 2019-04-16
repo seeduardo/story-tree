@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sentence: MyString
+  up_id: 1
+  down_id: 1
+  left_id: 1
+  right_id: 1
+
+two:
+  sentence: MyString
+  up_id: 1
+  down_id: 1
+  left_id: 1
+  right_id: 1
