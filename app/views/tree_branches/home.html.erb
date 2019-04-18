@@ -2,29 +2,52 @@
   <tr>
     <td></td>
     <td>
-      <textarea name="up" rows="5" cols="30"></textarea><br>
-      <input type="submit" value="Submit">
-    </td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>
-      <textarea name="left" rows="5" cols="30"></textarea><br>
-      <input type="submit" value="Submit">
-    </td>
-    <td>
+
+          <%= form_tag("/up", method:"post") do %>
+          <%= text_area_tag(:up, nil, rows: 4, cols: 25) %><br>
+          <%= submit_tag("Submit") %>
+            <% end %>
+          <%= link_to "#{params[:up]}" %>
 
     </td>
+    <td></td>
+  </tr>
+  <tr>
     <td>
-    <textarea name="right" rows="5" cols="30"></textarea><br>
-      <input type="submit" value="Submit">
+      <% if !params[:left] %>
+          <%= form_tag("/", method:"get") do %>
+          <%= text_area_tag(:left, nil, rows: 4, cols: 25) %><br>
+          <%= submit_tag("Submit") %>
+            <% end %>
+        <% else %>
+          <%= link_to "#{params[:left]}" %>
+      <% end %>
+    </td>
+    <td>
+      Once upon a time, there was an elegant sea otter.
+    </td>
+    <td>
+      <% if !params[:right] %>
+          <%= form_tag("/", method:"get") do %>
+          <%= text_area_tag(:right, nil, rows: 4, cols: 25) %><br>
+          <%= submit_tag("Submit") %>
+            <% end %>
+        <% else %>
+          <%= link_to "#{params[:right]}" %>
+      <% end %>
     </td>
   </tr>
   <tr>
     <td></td>
     <td>
-      <textarea name="down" rows="5" cols="30"></textarea><br>
-      <input type="submit" value="Submit">
+      <% if !params[:down] %>
+          <%= form_tag("/", method:"get") do %>
+          <%= text_area_tag(:down, nil, rows: 4, cols: 25) %><br>
+          <%= submit_tag("Submit") %>
+            <% end %>
+        <% else %>
+          <%= link_to "#{params[:down]}" %>
+      <% end %>
     </td>
     <td></td>
   </tr>
