@@ -7,7 +7,6 @@ class TreeBranchesController < ApplicationController
 
   def show
     @trunk = TreeBranch.find(params[:id])
-
     @up = TreeBranch.find(@trunk.up_id) if @trunk.up_id
     @left = TreeBranch.find(@trunk.left_id) if @trunk.left_id
     @right = TreeBranch.find(@trunk.right_id) if @trunk.right_id
@@ -22,24 +21,24 @@ class TreeBranchesController < ApplicationController
   end
 
   def left
-    session[:left] = params[:left]
-    @new_branch = TreeBranch.new(sentence: params[:left])
-    # @trunk = TreeBranch.find()
-    redirect_to root_path
+    @left = TreeBranch.create(sentence: params[:left])
+    @trunk = TreeBranch.find(params[:id])
+    @trunk.update(left_id: @left.id)
+    redirect_to @trunk
   end
 
   def right
-    session[:right] = params[:right]
-    @new_branch = TreeBranch.new(sentence: params[:right])
-    # @trunk = TreeBranch.find()
-    redirect_to root_path
+    @right = TreeBranch.create(sentence: params[:right])
+    @trunk = TreeBranch.find(params[:id])
+    @trunk.update(right_id: @right.id)
+    redirect_to @trunk
   end
 
   def down
-    session[:down] = params[:down]
-    @new_branch = TreeBranch.new(sentence: params[:down])
-    # @trunk = TreeBranch.find()
-    redirect_to root_path
+    @down = TreeBranch.create(sentence: params[:down])
+    @trunk = TreeBranch.find(params[:id])
+    @trunk.update(down_id: @down.id)
+    redirect_to @trunk
   end
 
 end

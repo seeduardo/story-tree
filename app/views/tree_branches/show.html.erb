@@ -15,42 +15,39 @@
   </tr>
   <tr>
     <td>
-      <% if !session[:left] %>
-        <%= form_tag("/left", method:"get") do %>
+      <% if !@left %>
+        <%= form_tag("/tree_branches/#{@trunk.id}/left", method:"get") do %>
           <%= text_area_tag(:left, nil, rows: 4, cols: 25) %><br>
           <%= submit_tag("Submit") %>
         <% end %>
         <% else %>
-          <%= link_to "#{session[:left]}" %>
+          <%= link_to @left.sentence, @left %>
       <% end %>
     </td>
     <td>
-      <!-- Once upon a time, there was an elegant sea otter. -->
       <%= @trunk.sentence %>
     </td>
     <td>
-      <% if !session[:right] %>
-        <%= form_tag("/right", method:"get") do %>
+      <% if !@right %>
+        <%= form_tag("/tree_branches/#{@trunk.id}/right", method:"get") do %>
           <%= text_area_tag(:right, nil, rows: 4, cols: 25) %><br>
           <%= submit_tag("Submit") %>
         <% end %>
-          <% session[:right] = params[:right] %>
         <% else %>
-          <%= link_to "#{session[:right]}" %>
+          <%= link_to @right.sentence, @right %>
       <% end %>
     </td>
   </tr>
   <tr>
     <td></td>
     <td>
-      <% if !session[:down] %>
-        <%= form_tag("/down", method:"get") do %>
+      <% if !@down %>
+        <%= form_tag("/tree_branches/#{@trunk.id}/down", method:"get") do %>
           <%= text_area_tag(:down, nil, rows: 4, cols: 25) %><br>
           <%= submit_tag("Submit") %>
         <% end %>
-          <% session[:down] = params[:down] %>
         <% else %>
-          <%= link_to "#{session[:down]}" %>
+          <%= link_to @down.sentence, @down %>
       <% end %>
     </td>
     <td></td>
